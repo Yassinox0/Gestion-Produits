@@ -1,0 +1,54 @@
+<div class="container">
+  <div>
+    <h2>Ajouter un Produit :</h2>
+  </div>
+  <form (ngSubmit)="addProduit()" #produitForm="ngForm">
+    <!-- Nom Produit -->
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <label>Nom Produit</label>
+      <input type="text" [(ngModel)]="newProduit.nomProduit" name="nomProduit" class="form-control">
+    </div>
+
+    <!-- Prix Produit -->
+    <div class="col-sm-2 col-md-2 col-lg-2">
+      <label>Prix Produit</label>
+      <input type="number" [(ngModel)]="newProduit.prixProduit" name="prixProduit" class="form-control">
+    </div>
+
+    <!-- Date de Création -->
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <label>Date création</label>
+      <input type="date" [(ngModel)]="newProduit.dateCreation" name="dateCreation" class="form-control">
+    </div>
+
+    <!-- Categorie -->
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <label>Categorie</label>
+      <select class="form-control form-control-lg" name="idCat" [(ngModel)]="newIdCat">
+        <option *ngFor="let cat of categories" [value]="cat.idCat">{{cat.nomCat}}</option>
+      </select>
+    </div>
+
+    <!-- Image Upload Section -->
+    <div class="col-sm-16 col-md-16 col-lg-16 mt-4">
+      <label class="mb-2">Image :</label>
+      <input type="file" (change)="onImageUpload($event)" name="logo" class="form-control">
+    </div>
+
+    <!-- Image Preview -->
+    <div class="col-sm-16 col-md-16 col-lg-16 mt-3">
+      <img [src]="imagePath" class="card-img-top img-fluid rounded-start"
+           style="width: 500px; height: 300px"/>
+    </div>
+
+    <!-- Supprimer Image Button -->
+    <div class="mt-2">
+      <button class="btn btn-danger"  type="button">Supprimer l'image</button>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="mt-2">
+      <button type="submit" class="btn btn-success">Ajouter</button>
+    </div>
+  </form>
+</div>
